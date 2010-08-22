@@ -42,7 +42,7 @@ void qu(int i)
 	{
 	  if(a[iColumn]==0&&b[i-iColumn+7]==0&&c[i+iColumn]==0) //如果无冲突
 	  {
-	   Queen[iColumn]='@'; //放皇后
+	   Queen[i][iColumn]='@'; //放皇后
 	   a[iColumn]=1;   //标记，下一次该列上不能放皇后
 	   b[i-iColumn+7]=1;  //标记，下一次该主对角线上不能放皇后
 	   c[i+iColumn]=1;   //标记，下一次该从对角线上不能放皇后
@@ -62,7 +62,7 @@ void qu(int i)
 	   }
 	   
 	   //如果前次的皇后放置导致后面的放置无论如何都不能满足要求，则回溯，重置
-	   Queen[iColumn]='*';
+	   Queen[i][iColumn]='*';
 	   a[iColumn]=0;
 	   b[i-iColumn+7]=0;
 	   c[i+iColumn]=0;
