@@ -2,6 +2,9 @@
 //
 
 #include "stdafx.h"
+#include <iostream>
+using namespace std;
+
 static int column_strike[8];
 static int master_diagonal[15];
 static int slave_diagonal[15];
@@ -59,6 +62,7 @@ void qu(int i)
 	  	column_strike[iColumn]=0;
 	  	master_diagonal[i-iColumn+7]=0;
 	  	slave_diagonal[i+iColumn]=0;
+	  	//cout<<"retreat from->"<<i<<","<<iColumn<<endl;
 		}
 	}
 } 
