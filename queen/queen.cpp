@@ -9,10 +9,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	return 0;
 }
 
-static char Queen【8】【8】;
-static int a【8】;
-static int b【15】;
-static int c【15】;
+static char Queen[8][8];
+static int a[8];
+static int b[15];
+static int c[15];
 static int iQueenNum=0;  //记录总的棋盘状态数
 
 void qu(int i);  //参数i代表行
@@ -24,9 +24,9 @@ int iLine,iColumn;
 //棋盘初始化，空格为*，放置皇后的地方为@
 for(iLine=0;iLine<8;iLine++)
 {
-  a【iLine】=0;  //列标记初始化，表示无列冲突
+  a[iLine]=0;  //列标记初始化，表示无列冲突
   for(iColumn=0;iColumn<8;iColumn++)
-   Queen【iLine】【iColumn】='*';
+   Queen[iLine][iColumn]='*';
 }
 
 //主、从对角线标记初始化，表示没有冲突
