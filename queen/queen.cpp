@@ -13,19 +13,19 @@ void qu(int i);  //参数i代表行
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int iLine,iColumn;
+	int nav,iColumn;
 
 	//棋盘初始化，空格为*，放置皇后的地方为@
-	for(iLine=0;iLine<8;iLine++)
+	for(nav=0;nav<8;nav++)
 	{
-	  a[iLine]=0;  //列标记初始化，表示无列冲突
+	  a[nav]=0;  //列标记初始化，表示无列冲突
 	  for(iColumn=0;iColumn<8;iColumn++)
-	   Queen[iLine][iColumn]='*';
+	   Queen[nav][iColumn]='*';
 	}
 	
 	//主、从对角线标记初始化，表示没有冲突
-	for(iLine=0;iLine<15;iLine++)
-	  b[iLine]=c[iLine]=0;
+	for(nav=0;nav<15;nav++)
+	  b[nav]=c[nav]=0;
 	
 	qu(0);
 	return 0;
@@ -36,9 +36,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 void qu(int i)
 {
-	int iColumn;
-	
-	for(iColumn=0;iColumn<8;iColumn++)
+	for(int iColumn=0;iColumn<8;iColumn++)
 	{
 	  if(a[iColumn]==0&&b[i-iColumn+7]==0&&c[i+iColumn]==0) //如果无冲突
 	  {
@@ -50,12 +48,12 @@ void qu(int i)
 	   else     //否则输出
 	   {
 	    //输出棋盘状态
-	    int iLine,iColumn;
+	    int iColumn;
 	    printf("第%d种状态为：\n",++iQueenNum);
-	    for(iLine=0;iLine<8;iLine++)
+	    for(int nav=0;nav<8;nav++)
 	    {
 	     for(iColumn=0;iColumn<8;iColumn++)
-	      printf("%c  ",Queen[iLine][iColumn]);
+	      printf("%c  ",Queen[nav][iColumn]);
 	     printf("\n");
 	    }
 	    printf("\n\n");
