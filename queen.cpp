@@ -7,7 +7,6 @@ static char Queen[8][8];
 
 void qu(int i);  //参数i代表行
 
-
 int main()
 {
   int iLine,iColumn;
@@ -27,9 +26,6 @@ int main()
   qu(0);
   return 0;
 }
-
-
-
 
 void qu(int i)
 {
