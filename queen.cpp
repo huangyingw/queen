@@ -5,7 +5,7 @@ static int c[15];
 static int iQueenNum=0;  //记录总的棋盘状态数
 static char Queen[8][8];
 
-void qu(int i);  //参数i代表行
+void qu(int iRow);  //参数iRow代表行
 
 int main()
 {
@@ -27,19 +27,20 @@ int main()
   return 0;
 }
 
-void qu(int i)
+void qu(int iRow)
 {
   int iColumn;
 
   for(iColumn=0;iColumn<8;iColumn++)
   {
-    if(a[iColumn]==0&&b[i-iColumn+7]==0&&c[i+iColumn]==0) //如果无冲突
+    if(a[iColumn]==0&&b[iRow-iColumn+7]==0&&c[iRow+iColumn]==0) //如果无冲突
     {
-      Queen[i][iColumn]='@'; //放皇后
+      Queen[iRow][iColumn]='@'; //放皇后
       a[iColumn]=1;   //标记，下一次该列上不能放皇后
-      b[i-iColumn+7]=1;  //标记，下一次该主对角线上不能放皇后
-      c[i+iColumn]=1;   //标记，下一次该从对角线上不能放皇后
-      if(i<7) qu(i+1);  //如果行还没有遍历完，进入下一行
+      b[iRow-iColumn+7]=1;  //标记，下一次该主对角线上不能放皇后
+      c[iRow+iColumn]=1;   //标记，下一次该从对角线上不能放皇后
+      if(iRow<7)
+        qu(iRow+1);  //如果行还没有遍历完，进入下一行
       else     //否则输出
       {
         //输出棋盘状态
@@ -55,10 +56,10 @@ void qu(int i)
       }
 
       //如果前次的皇后放置导致后面的放置无论如何都不能满足要求，则回溯，重置
-      Queen[i][iColumn]='*';
+      Queen[iRow][iColumn]='*';
       a[iColumn]=0;
-      b[i-iColumn+7]=0;
-      c[i+iColumn]=0;
+      b[iRow-iColumn+7]=0;
+      c[iRow+iColumn]=0;
     }
   }
 }
