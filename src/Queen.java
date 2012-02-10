@@ -1,9 +1,29 @@
+import java.util.ArrayList;
+
 public class Queen {
-	private int count;
-	private int[][] data;
-	private int[] principalDiagonal;
-	private int[] slaveDiagonal;
+	public static void main(String[] args) {
+		Queen que = new Queen(8);
+		ArrayList<Integer[][]> result = que.qu(0);
+		for (Integer[][] nav : result) {
+			for (int i = 0; i < que.count; i++) {
+				for (int j = 0; j < que.count; j++) {
+					if (nav[i][j] == 0)
+						System.out.print('O');
+					else
+						System.out.print('@');
+				}
+				System.out.println();
+			}
+			System.out.println();
+		}
+	}
+
 	private int[] col;
+	private int count;
+	private Integer[][] data;
+	private int[] principalDiagonal;
+
+	private int[] slaveDiagonal;
 
 	public Queen(int count) {
 		super();
@@ -12,7 +32,7 @@ public class Queen {
 	}
 
 	public void init() {
-		data = new int[count][count];
+		data = new Integer[count][count];
 		for (int i = 0; i < count; i++) {
 			for (int j = 0; j < count; j++) {
 				data[i][j] = 0;
@@ -50,7 +70,8 @@ public class Queen {
 		qu(0);
 	}
 
-	public void qu(int row) {
+	public ArrayList<Integer[][]> qu(int row) {
+		ArrayList<Integer[][]> result = new ArrayList<Integer[][]>();
 		for (int i = 0; i < count; i++) {
 			if (col[i] != 1 && principalDiagonal[i - row + count - 1] != 1
 					&& slaveDiagonal[row + i] != 1) {
@@ -59,9 +80,11 @@ public class Queen {
 				principalDiagonal[i - row + count - 1] = 1;
 				slaveDiagonal[row + i] = 1;
 				if (row < count - 1)
-					qu(row + 1);
+					result.addAll(qu(row + 1));
 				else {
+					result.add(data);
 					print();
+					return result;
 				}
 				// undo
 				data[row][i] = 0;
@@ -70,10 +93,6 @@ public class Queen {
 				slaveDiagonal[row + i] = 0;
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		Queen que = new Queen(8);
-		que.qu(0);
+		return result;
 	}
 }
