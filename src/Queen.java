@@ -83,7 +83,7 @@ public class Queen {
 					result.addAll(qu(row + 1));
 				else {
 					result.add(data);
-					print();
+					// print();
 					return result;
 				}
 				// undo
