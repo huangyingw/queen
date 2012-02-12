@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Queen {
 	public static void main(String[] args) {
 		Queen que = new Queen(8);
-		ArrayList<Integer[][]> result = que.qu(0);
+		ArrayList<Integer[][]> result = que.qu(0, null);
 		// for (Integer[][] nav : result) {
 		// for (int i = 0; i < que.count; i++) {
 		// for (int j = 0; j < que.count; j++) {
@@ -67,11 +67,13 @@ public class Queen {
 	}
 
 	public void qu() {
-		qu(0);
+		qu(0, null);
 	}
 
-	public ArrayList<Integer[][]> qu(int row) {
-		ArrayList<Integer[][]> result = new ArrayList<Integer[][]>();
+	public ArrayList<Integer[][]> qu(int row, ArrayList<Integer[][]> result) {
+		if (result == null) {
+			result = new ArrayList<Integer[][]>();
+		}
 		for (int i = 0; i < count; i++) {
 			if (col[i] != 1 && principalDiagonal[i - row + count - 1] != 1
 					&& slaveDiagonal[row + i] != 1) {
@@ -80,11 +82,12 @@ public class Queen {
 				principalDiagonal[i - row + count - 1] = 1;
 				slaveDiagonal[row + i] = 1;
 				if (row < count - 1)
-					result.addAll(qu(row + 1));
+					qu(row + 1, result);
 				// qu(row + 1);
 				else {
 					result.add(data);
-					print();
+					// print();
+					System.out.println(result.size());
 				}
 				// undo
 				data[row][i] = 0;
