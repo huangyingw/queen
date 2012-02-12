@@ -3,19 +3,20 @@ import java.util.ArrayList;
 public class Queen {
 	public static void main(String[] args) {
 		Queen que = new Queen(8);
-		ArrayList<Integer[][]> result = que.qu(0, null);
-		// for (Integer[][] nav : result) {
-		// for (int i = 0; i < que.count; i++) {
-		// for (int j = 0; j < que.count; j++) {
-		// if (nav[i][j] == 0)
-		// System.out.print('O');
-		// else
-		// System.out.print('@');
-		// }
-		// System.out.println();
-		// }
-		// System.out.println();
-		// }
+		ArrayList<Integer[][]> result = new ArrayList<Integer[][]>();
+		que.qu(0, result);
+		for (Integer[][] nav : result) {
+			for (int i = 0; i < que.count; i++) {
+				for (int j = 0; j < que.count; j++) {
+					if (nav[i][j] == 0)
+						System.out.print('O');
+					else
+						System.out.print('@');
+				}
+				System.out.println();
+			}
+			System.out.println();
+		}
 	}
 
 	private int[] col;
@@ -85,7 +86,7 @@ public class Queen {
 					qu(row + 1, result);
 				// qu(row + 1);
 				else {
-					result.add(data);
+					result.add(data.clone());
 					// print();
 					System.out.println(result.size());
 				}
