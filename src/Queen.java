@@ -4,18 +4,18 @@ public class Queen {
 	public static void main(String[] args) {
 		Queen que = new Queen(8);
 		ArrayList<Integer[][]> result = que.qu(0);
-		for (Integer[][] nav : result) {
-			for (int i = 0; i < que.count; i++) {
-				for (int j = 0; j < que.count; j++) {
-					if (nav[i][j] == 0)
-						System.out.print('O');
-					else
-						System.out.print('@');
-				}
-				System.out.println();
-			}
-			System.out.println();
-		}
+		// for (Integer[][] nav : result) {
+		// for (int i = 0; i < que.count; i++) {
+		// for (int j = 0; j < que.count; j++) {
+		// if (nav[i][j] == 0)
+		// System.out.print('O');
+		// else
+		// System.out.print('@');
+		// }
+		// System.out.println();
+		// }
+		// System.out.println();
+		// }
 	}
 
 	private int[] col;
@@ -81,10 +81,10 @@ public class Queen {
 				slaveDiagonal[row + i] = 1;
 				if (row < count - 1)
 					result.addAll(qu(row + 1));
+				// qu(row + 1);
 				else {
 					result.add(data);
-					// print();
-					return result;
+					print();
 				}
 				// undo
 				data[row][i] = 0;
