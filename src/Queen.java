@@ -1,9 +1,15 @@
 public class Queen {
+	public static void main(String[] args) {
+		Queen que = new Queen(8);
+		que.qu(0);
+	}
+
+	private int[] col;
 	private int count;
 	private int[][] data;
 	private int[] principalDiagonal;
+
 	private int[] slaveDiagonal;
-	private int[] col;
 
 	public Queen(int count) {
 		super();
@@ -70,10 +76,5 @@ public class Queen {
 				slaveDiagonal[row + i] = 0;
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		Queen que = new Queen(8);
-		que.qu(0);
 	}
 }
