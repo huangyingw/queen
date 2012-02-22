@@ -4,23 +4,24 @@ public class Queen {
 	public static void main(String[] args) {
 		Queen que = new Queen(8);
 		ArrayList<Integer[][]> result = new ArrayList<Integer[][]>();
-		result = que.qu(0, result);
-		// for (Integer[][] nav : result) {
-		// for (int i = 0; i < que.count; i++) {
-		// for (int j = 0; j < que.count; j++) {
-		// if (nav[i][j] == 0)
-		// System.out.print('O');
-		// else
-		// System.out.print('@');
-		// }
-		// System.out.println();
-		// }
-		// System.out.println();
-		// }
+		que.qu(0, result);
+		for (Integer[][] nav : result) {
+			for (int i = 0; i < que.count; i++) {
+				for (int j = 0; j < que.count; j++) {
+					if (nav[i][j] == 0)
+						System.out.print('O');
+					else
+						System.out.print('@');
+				}
+				System.out.println();
+			}
+			System.out.println();
+		}
 	}
 
 	private int[] col;
 	private int count;
+	private int resultCount = 0;
 	private Integer[][] data;
 	private int[] principalDiagonal;
 
@@ -86,9 +87,9 @@ public class Queen {
 					qu(row + 1, result);
 				// qu(row + 1);
 				else {
-					result.add(data.clone());
-					print();
-					System.out.println(result.size());
+					result.add(data);
+					// print();
+					// System.out.println(result.size());
 				}
 				// undo
 				data[row][i] = 0;
