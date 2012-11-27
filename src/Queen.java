@@ -58,23 +58,34 @@ public class Queen {
 
 	public void qu(int row) {
 		for (int i = 0; i < count; i++) {
-			if (col[i] != 1 && principalDiagonal[i - row + count - 1] != 1
-					&& slaveDiagonal[row + i] != 1) {
-				data[row][i] = 1;
-				col[i] = 1;
-				principalDiagonal[i - row + count - 1] = 1;
-				slaveDiagonal[row + i] = 1;
+			if (testFlag(row, i)) {
+				setFlag(row, i);
 				if (row < count - 1)
 					qu(row + 1);
 				else {
 					print();
 				}
-				// undo
-				data[row][i] = 0;
-				col[i] = 0;
-				principalDiagonal[i - row + count - 1] = 0;
-				slaveDiagonal[row + i] = 0;
+				unsetFlag(row, i);
 			}
 		}
+	}
+
+	private void unsetFlag(int row, int i) {
+		data[row][i] = 0;
+		col[i] = 0;
+		principalDiagonal[i - row + count - 1] = 0;
+		slaveDiagonal[row + i] = 0;
+	}
+
+	private void setFlag(int row, int i) {
+		data[row][i] = 1;
+		col[i] = 1;
+		principalDiagonal[i - row + count - 1] = 1;
+		slaveDiagonal[row + i] = 1;
+	}
+
+	private boolean testFlag(int row, int i) {
+		return col[i] != 1 && principalDiagonal[i - row + count - 1] != 1
+				&& slaveDiagonal[row + i] != 1;
 	}
 }
